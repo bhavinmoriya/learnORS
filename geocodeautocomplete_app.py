@@ -46,7 +46,7 @@ if st.button("Search"):
         if call.status_code == 200:
             data = call.json()
             st.subheader("API Response")
-            st.json(data)
+            # st.json(data)
             
             if data.get("features"):
                 # Center map on first feature
