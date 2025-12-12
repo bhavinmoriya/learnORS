@@ -3,9 +3,15 @@ import requests
 import folium
 from streamlit_folium import st_folium
 
+st.set_page_config(
+    page_title="Openrouteservice Geocode Autocomplete",
+    page_icon="🗺️",
+    layout="centered"
+)
+
 st.title("Openrouteservice Geocode Autocomplete")
 
-st.markdown("Get your API key from [openrouteservice.org](https://openrouteservice.org/) for unlimited use, or use the demo key (limited to 10 searches per session).")
+st.markdown("Get your API key from [openrouteservice.org](https://account.heigit.org/login) for unlimited use, or use the demo key (limited to 10 searches per session).")
 
 # Initialize session state for API call count
 if 'api_call_count' not in st.session_state:
