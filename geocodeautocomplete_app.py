@@ -2,20 +2,36 @@ import streamlit as st
 import requests
 import folium
 from streamlit_folium import st_folium
-import os
-from dotenv import load_dotenv
-
-load_dotenv()  # Load environment variables from .env file
-api_key = os.getenv("OPENROUTE_API_KEY")
 
 st.title("Openrouteservice Geocode Autocomplete")
+
+st.markdown("Get your API key from [openrouteservice.org](https://openrouteservice.org/) for unlimited use, or use the demo key (limited to 10 searches per session).")
+
+# Initialize session state for API call count
+if 'api_call_count' not in st.session_state:
+    st.session_state.api_call_count = 0
+
+api_key_input = st.text_input("Enter your Openrouteservice API Key (optional)", type="password")
 
 text_input = st.text_input("Enter text to geocode", "Toky")
 
 if st.button("Search"):
-    if not api_key:
-        st.error("API key not found. Please set OPENROUTE_API_KEY in .env file.")
-    elif text_input:
+    if api_key_input:
+        api_key = api_key_input
+        st.info("Using your provided API key.")
+    else:
+        if st.session_state.api_call_count >= 10:
+            st.error("You have reached the limit of 10 free uses. Please provide your own API key.")
+            st.stop()
+        try:
+            api_key = st.secrets["OPENROUTE_API_KEY"]
+            st.session_state.api_call_count += 1
+            st.info(f"Using demo API key. Uses left: {10 - st.session_state.api_call_count}")
+        except KeyError:
+            st.error("Demo API key not configured. Please provide your own API key.")
+            st.stop()
+    
+    if text_input:
         headers = {
             'Accept': 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8',
         }

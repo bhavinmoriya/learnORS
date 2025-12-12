@@ -46,15 +46,21 @@ Outputs are printed to the console, and some generate HTML files for visualizati
 
 ### Streamlit App
 
-#### geocode_app.py
-**Purpose:** Interactive Streamlit app for geocoding autocomplete with user input and map visualization.
+#### geocodeautocomplete_app.py
+**Purpose:** Interactive Streamlit app for geocoding autocomplete with optional user API key input, demo key (limited to 10 uses per session), and map visualization.
 
 **Usage:**
 ```bash
-streamlit run geocode_app.py
+streamlit run geocodeautocomplete_app.py
 ```
 
-Enter text in the input field and click "Search" to see autocomplete results and an interactive map.
+Users can enter their own Openrouteservice API key for unlimited use, or use the demo key for up to 10 searches per session. Enter text to geocode and click "Search" to see results and an interactive map.
+
+**Setup for Demo Key:** For deployed apps, set the API key in Streamlit secrets as `OPENROUTE_API_KEY`. For local development, create `.streamlit/secrets.toml` with:
+
+```
+OPENROUTE_API_KEY = "your_api_key_here"
+```
 
 ## Python Scripts
 
