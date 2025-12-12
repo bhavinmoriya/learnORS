@@ -6,7 +6,7 @@ from streamlit_folium import st_folium
 st.set_page_config(
     page_title="Openrouteservice Geocode Search",
     page_icon="🔍",
-    layout="centered"
+    layout="wide"
 )
 
 st.title("Openrouteservice Geocode Search")
@@ -45,8 +45,8 @@ if st.button("Search"):
         
         if call.status_code == 200:
             data = call.json()
-            st.subheader("API Response")
-            st.json(data)
+            # st.subheader("API Response")
+            # st.json(data)
 
             st.subheader(f"API Response has {len(data['features'])} features")
             # st.json(len(data["features"]))
@@ -65,7 +65,7 @@ if st.button("Search"):
                     ).add_to(m)
                 
                 st.subheader("Map")
-                st_folium(m, width=700, height=500, returned_objects=[])
+                st_folium(m, width=1700, returned_objects=[])
             else:
                 st.warning("No features found.")
         else:
