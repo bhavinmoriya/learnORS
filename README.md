@@ -66,9 +66,10 @@ streamlit run geocodereverse_app.py
 
 Enter latitude and longitude, optionally provide your API key, and click "Reverse Geocode" to see address results and an interactive map.
 
-**Setup for Demo Key:** For deployed apps, set the API key in Streamlit secrets as `OPENROUTE_API_KEY`. For local development, create `.streamlit/secrets.toml` with:
+**Setup for Demo Key:** For deployed apps, set the API key in Streamlit secrets under the `openrouteservice` section. For local development, create `.streamlit/secrets.toml` with:
 
 ```
+[openrouteservice]
 OPENROUTE_API_KEY = "your_api_key_here"
 ```
 

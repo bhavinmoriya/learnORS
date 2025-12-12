@@ -30,7 +30,7 @@ if st.button("Search"):
             st.error("You have reached the limit of 10 free uses. Please provide your own API key.")
             st.stop()
         try:
-            api_key = st.secrets["OPENROUTE_API_KEY"]
+            api_key = st.secrets["openrouteservice"]["OPENROUTE_API_KEY"]
             st.session_state.api_call_count += 1
             st.info(f"Using demo API key. Uses left: {10 - st.session_state.api_call_count}")
         except KeyError:
@@ -62,7 +62,7 @@ if st.button("Search"):
                     ).add_to(m)
                 
                 st.subheader("Map")
-                st_folium(m, width=700, height=500)
+                st_folium(m, width=700, height=500, returned_objects=[])
             else:
                 st.warning("No features found.")
         else:
