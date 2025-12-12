@@ -55,16 +55,24 @@ streamlit run geocodeautocomplete_app.py
 ```
 
 Users can enter their own Openrouteservice API key for unlimited use, or use the demo key for up to 10 searches per session. Enter text to geocode and click "Search" to see results and an interactive map.
-
-#### geocodereverse_app.py
-**Purpose:** Interactive Streamlit app for reverse geocoding with optional user API key input, demo key (limited to 13 uses per session), latitude/longitude inputs, and map visualization.
+#### geocodesearch_app.py
+**Purpose:** Interactive Streamlit app for geocoding search with optional user API key input, demo key (limited to 13 uses per session), text input, and map visualization.
 
 **Usage:**
 ```bash
-streamlit run geocodereverse_app.py
+streamlit run geocodesearch_app.py
 ```
 
-Enter latitude and longitude, optionally provide your API key, and click "Reverse Geocode" to see address results and an interactive map.
+Enter text to geocode and optionally provide your API key, then click "Search" to see results and an interactive map.
+#### geocodesearch_app.py
+**Purpose:** Interactive Streamlit app for geocoding search with optional user API key input, demo key (limited to 13 uses per session), text input, and map visualization.
+
+**Usage:**
+```bash
+streamlit run geocodesearch_app.py
+```
+
+Enter text to geocode and optionally provide your API key, then click "Search" to see results and an interactive map.
 
 **Setup for Demo Key:** For deployed apps, set the API key in Streamlit secrets under the `openrouteservice` section. For local development, create `.streamlit/secrets.toml` with:
 
